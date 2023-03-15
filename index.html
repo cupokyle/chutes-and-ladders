@@ -1,20 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chutes & Ladders</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <div id="app">
-    <h1>Chutes & Ladders</h1>
-<div id="board"></div>
-<button id="roll-dice">Roll Dice</button>
-<p id="message"></p>
 
-    <!-- Game components will go here -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chutes & Ladders</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div id="app">
+        <h1>Chutes & Ladders</h1>
+        <div id="board-container">
+            <div id="board-wrapper">
+                <svg id="board-svg"></svg>
+                <div id="board"></div>
+            </div>
+        </div>
+        <!-- Add this inside the #app div, just before the Roll Dice button -->
+        <div id="dice" class="dice"></div>
+
+        <button id="roll-dice">Roll Dice</button>
+        <p id="message"></p>
+    </div>
+    <div id="leaderboard-container">
+        <h2>Leaderboard</h2>
+        <ol id="leaderboard"></ol>
+      </div>
+    <script src="script.js"></script>
+<div id="winning-modal" class="modal">
+    <div class="modal-content">
+      <h2>Congratulations!</h2>
+      <p>Enter your name:</p>
+      <input type="text" id="player-name" />
+      <button id="submit-name">Submit</button>
+    </div>
   </div>
-  <script src="script.js"></script>
 </body>
+
 </html>

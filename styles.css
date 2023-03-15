@@ -1,14 +1,242 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
+    /* Add the font family */
     text-align: center;
-  }
-  
-  #board {
-    display: inline-grid;
+}
+
+@keyframes dice-roll-animation {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(90deg);
+    }
+
+    50% {
+        transform: rotate(180deg);
+    }
+
+    75% {
+        transform: rotate(270deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.dice-roll-animation {
+    animation: dice-roll-animation 0.5s linear infinite;
+}
+
+
+@keyframes chute-line-animation {
+    0% {
+        stroke-dashoffset: 0;
+    }
+
+    100% {
+        stroke-dashoffset: -100;
+    }
+}
+
+.chute-line-animation {
+    stroke-dasharray: 10;
+    animation: chute-line-animation 1s linear infinite;
+}
+
+
+@keyframes chute-animation {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(10px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes ladder-animation {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.hide {
+    display: none;
+}
+
+.dice {
+    font-size: 2rem;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.player-img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+
+
+.chute {
+    color: red;
+}
+
+.ladder {
+    color: green;
+}
+
+
+.player-chute {
+    animation: chute-animation 0.5s ease-in-out;
+}
+
+.player-ladder {
+    animation: ladder-animation 0.5s ease-in-out;
+}
+
+
+/* ... (previous styles) */
+
+#board-wrapper {
+    position: relative;
+}
+
+#board-container {
+    position: relative;
+    width: 520px;
+    height: 520px;
+    margin: 20px auto;
+}
+
+#board-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 20;
+}
+
+#board {
+    position: relative;
+    z-index: 10;
+    display: grid;
     grid-template-columns: repeat(10, 50px);
     grid-template-rows: repeat(10, 50px);
     gap: 2px;
-  }
-  
-  /* You can add more styles to improve the appearance */
-  
+    width: 100%;
+    height: 100%;
+}
+
+.cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    width: 50px;
+    border: 1px solid #ccc;
+    background-color: #f0f0f0;
+}
+
+.player {
+    color: #0066ff;
+    font-weight: bold;
+}
+
+/* Leaderboard */
+#leaderboard-container {
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    width: 200px;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+input[type="text"] {
+    display: block;
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+}
+
+button#submit-name {
+    display: block;
+    width: 100%;
+    padding: 5px;
+    background-color: #0066ff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+/* Roll Dice button */
+#roll-dice {
+    background-color: #4CAF50;
+    /* Green background color */
+    border: none;
+    color: white;
+    /* White text color */
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    /* display: inline-block; */
+    font-size: 16px;
+    margin: 10px 2px;
+    cursor: pointer;
+    border-radius: 12px;
+    /* Rounded corners */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    /* Drop shadow */
+    transition: background-color 0.3s, transform 0.3s;
+    /* Smooth color change and scale */
+}
+
+/* Roll Dice button hover effect */
+#roll-dice:hover {
+    background-color: #45a049;
+    /* Slightly darker green on hover */
+    transform: scale(1.1);
+    /* Slightly larger on hover */
+}
