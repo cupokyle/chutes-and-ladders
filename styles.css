@@ -1,0 +1,14 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+  
+  #board {
+    display: inline-grid;
+    grid-template-columns: repeat(10, 50px);
+    grid-template-rows: repeat(10, 50px);
+    gap: 2px;
+  }
+  
+  /* You can add more styles to improve the appearance */
+  
